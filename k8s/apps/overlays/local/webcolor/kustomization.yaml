@@ -30,6 +30,9 @@ patches:
     "value": 70}]'
   target:
     kind: HorizontalPodAutoscaler
+- patch: '[{"op": "replace", "path": "/spec/ports/0/targetPort", "value": 80}]'
+  target:
+    kind: Service    
 images:
 - name: app-image-repo
   newName: kubedevio/nginx-color
