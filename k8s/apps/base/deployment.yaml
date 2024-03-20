@@ -22,27 +22,7 @@ spec:
         image: app-image-repo
         ports:
         - name: app-port
-          containerPort: 3000
-        startupProbe:
-          httpGet:
-            path: /healthcheck
-            port: app-port
-          initialDelaySeconds: 15
-          periodSeconds: 5
-          timeoutSeconds: 5
-          failureThreshold: 30
-        readinessProbe:
-          httpGet:
-            path: /healthcheck
-            port: app-port
-          initialDelaySeconds: 5
-          periodSeconds: 15
-        livenessProbe:
-          httpGet:
-            path: /healthcheck
-            port: app-port
-          initialDelaySeconds: 5
-          periodSeconds: 15    
+          containerPort: 3000   
       nodeSelector:
         nodegroup: applications
       restartPolicy: Always
