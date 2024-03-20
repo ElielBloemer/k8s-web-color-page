@@ -1,0 +1,36 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../../base
+- app-hpa.yaml
+commonLabels:
+  app: webcolor
+  nameprefix: webcolor
+namespace: webcolor
+patches:
+- patch: '[{"op": "replace", "path": "/spec/template/spec/containers/0/ports/0/containerPort",
+    "value": 80}]'
+  target:
+    kind: Deployment
+- patch: '[{"op": "add", "path": "/spec/replicas", "value": 15}]'
+  target:
+    kind: Deployment
+- patch: '[{"op": "add", "path": "/spec/template/spec/containers/0/resources",
+    "value": {"limits": {"cpu": "400m", "memory": "2048" }, "requests":
+    {"cpu": "200m", "memory": "1024Mi" }}}]'
+  target:
+    kind: Deployment
+- patch: '[{"op": "replace", "path": "/spec/minReplicas", "value": null}]'
+  target:
+    kind: HorizontalPodAutoscaler
+- patch: '[{"op": "replace", "path": "/spec/maxReplicas", "value": 5}]'
+  target:
+    kind: HorizontalPodAutoscaler
+- patch: '[{"op": "replace", "path": "/spec/metrics/0/resource/target/averageUtilization",
+    "value": 90}]'
+  target:
+    kind: HorizontalPodAutoscaler
+images:
+- name: iol-app-image-repo
+  newName: kubedevio/nginx-color
+  newTag: blue
