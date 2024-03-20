@@ -16,7 +16,7 @@ patches:
   target:
     kind: Deployment
 - patch: '[{"op": "add", "path": "/spec/template/spec/containers/0/resources",
-    "value": {"limits": {"cpu": "400m", "memory": "2048" }, "requests":
+    "value": {"limits": {"cpu": "400m", "memory": "2048Mi" }, "requests":
     {"cpu": "200m", "memory": "1024Mi" }}}]'
   target:
     kind: Deployment
