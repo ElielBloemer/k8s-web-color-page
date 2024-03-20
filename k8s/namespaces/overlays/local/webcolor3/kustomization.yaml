@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../../base
+namespace: webcolor3
+patches:
+- patch: '[{"op": "replace", "path": "/metadata/name", "value": "webcolor3"}]'
+  target:
+    kind: Namespace
