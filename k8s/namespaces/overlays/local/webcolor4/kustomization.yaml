@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ../../../base
 namespace: webcolor4
+###NO ENCUENTRO FUNCIONALIDAD DE ACA PARA BAJO
 patches:
 - patch: '[{"op": "replace", "path": "/metadata/name", "value": "webcolooooor"}]'
   target:
