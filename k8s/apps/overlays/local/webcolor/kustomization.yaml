@@ -5,7 +5,7 @@ resources:
 - app-hpa.yaml
 commonLabels:
   app: webcolor
-  nameprefix: webcolor
+  nameprefix: webcolor-
 namespace: webcolor
 patches:
 - patch: '[{"op": "replace", "path": "/spec/template/spec/containers/0/ports/0/containerPort",
