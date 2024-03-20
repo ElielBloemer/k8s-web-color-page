@@ -31,6 +31,6 @@ patches:
   target:
     kind: HorizontalPodAutoscaler
 images:
-- name: iol-app-image-repo
+- name: app-image-repo
   newName: kubedevio/nginx-color
   newTag: blue
