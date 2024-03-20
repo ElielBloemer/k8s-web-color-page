@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - webcolor
 - webcolor2
-- webcolor2
+- webcolor3
